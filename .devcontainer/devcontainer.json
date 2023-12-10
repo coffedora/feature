@@ -1,25 +1,52 @@
-{
-    "image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "json.schemas": [
-                    {
-                        "fileMatch": [
-                            "*/devcontainer-feature.json"
-                        ],
-                        "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerFeature.schema.json"
-                    }
-                ]
-            },
-            "extensions": [
-                "mads-hartmann.bash-ide-vscode"
-            ]
-        }
-    },
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    },
-    "remoteUser": "node",
-    "updateContentCommand": "npm install -g @devcontainers/cli"
+{	
+    "remoteUser": "root", 
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"azureDnsAutoDetection": true,
+			"installDockerBuildx": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "v2"
+		},
+		"ghcr.io/devcontainers-contrib/features/act:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/actionlint:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/gh-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-contrib/features/starship:1": {
+			"version": "latest"
+		},
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
+			"jqVersion": "latest",
+			"yqVersion": "latest",
+			"gojqVersion": "latest",
+			"xqVersion": "latest"
+		},
+		"ghcr.io/eliises/devcontainer-features/devcontainers-cli:1": {
+			"version": "latest",
+			"nodeVersion": "18.13.10"
+		},
+		"ghcr.io/devcontainers/features/sshd:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"yzhang.markdown-all-in-one",
+				"mads-hartmann.bash-ide-vscode",
+				"dbaeumer.vscode-eslint",
+				"foxundermoon.shell-format",
+				"GitHub.copilot",
+				"EditorConfig.EditorConfig",
+				"GitHub.vscode-pull-request-github"
+			]
+		}
+	},
+  "remoteEnv": {
+    "GH_TOKEN":"${localEnv:GH_TOKEN}"
+  }
 }
