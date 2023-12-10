@@ -2,7 +2,9 @@
 	// Example Tasks for a devcontainercli project
 	"version": "2.0.0",
 	"presentation": {
-		"panel": "new"
+		"panel": "dedicated",
+		"focus": false,
+		"revealProblems": "onProblem"
 	},
 	"windows": {
 		"options": {
@@ -14,7 +16,7 @@
 	//env variables are used to pass arguments to the tasks
 	"options": {
 		"env": {
-			"feature": "common",
+			"feature": "setup",
 			"baseImage": "quay.io/fedora/fedora-minimal:latest",
 		}
 	},

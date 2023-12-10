@@ -3,7 +3,7 @@
             "image": "quay.io/fedora/fedora-minimal:latest",
             "features": {
                 "setup": {
-                    "username":"testuser"
+                    "USERNAME":"vscode"
                 }
             }
     }
