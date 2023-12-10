@@ -71,7 +71,8 @@ dnfS(){
   if ! fzf --version> /dev/null 2>&1; then
     dnf install -y fzf
   fi
-  dnf search $@ | fzf
+  # selection from fzf cuts the string until the "." and passes the result to dnf install 
+  dnf search $@ | fzf | cut -d'.' -f1 | xargs dnf install  
 }
 
 dnfI $@

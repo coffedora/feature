@@ -10,11 +10,9 @@ source dev-container-features-test-lib
 
 # Feature-specific tests
 # The 'check' command comes from the dev-container-features-test-lib.
-check "Fedora OS Release" [ $(cat /etc/os-release | grep "ID=fedora") ]
-check "DNF Available" [ "$(dnf --version)" ]
-check "Create vscode" [ $(cat /etc/passwd | grep vscode) ]
-check "Create home directory " [ "$(ls /home/vscode/.local/)" ]
-check "GH-Cli Installed" [ "$(gh version)" ]
+check "GO Version changed" [ "$(go version | grep '1.21.4' )" ]
+check "GO Tools installed" [ "$(templ version)" ]
+check "GO Tools installed" [ "$(go-blueprint version)" ]
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.
 reportResults

@@ -1,9 +1,12 @@
 {
     "remote_user": {
-        "image": "quay.io/fedora/fedora-minimal:latest",
+        "image": "quay.io/fedora/fedora-minimal:39",
         "features": {
             "setup": {
                 "username":"vscode"
+            },
+            "go-lang": {
+                "version": "1.21.5"
             }
         },
         "remoteUser": "vscode"

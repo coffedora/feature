@@ -14,6 +14,7 @@ jobs:
       matrix:
         features:
           - setup
+          - go-lang
         baseImage:
           - quay.io/fedora/fedora-minimal:latest
     steps:
@@ -32,8 +33,9 @@ jobs:
       matrix:
         features:
           - setup
+          - go-lang
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli

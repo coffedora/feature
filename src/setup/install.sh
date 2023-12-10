@@ -20,9 +20,9 @@ DNF_COPR="${COPR:-"automatic"}"
 DNF_REMOVE="${REMOVE:-"automatic"}"
 REQUIREMENTS="\
     coreutils iputils shadow-utils util-linux \
-    git sudo passwd cracklib-dicts \
-    procps procps-ng psmisc fd fzf \
-    wget which tar xz unzip zip"
+    git gh sudo passwd cracklib-dicts \
+    procps procps-ng python3 python3-pip psmisc fd fzf \
+    wget which tar xz unzip zip fish"
 # Main script bootstraps the environment and then executes
 echo -e 'Preset Enviroment'
 
@@ -33,6 +33,7 @@ ln -s /workspaces/ /etc/skel/workspaces
 echo -e 'source scripts'
 source ./lib/dnf.sh $REQUIREMENTS
 source ./lib/user.sh
+dnfI $DNF_INSTALL
 #Check in /etc/passwd if a user owns home directory
 # check if there is any home directories in /home
 if [ "$(ls -A /home)" ]; then

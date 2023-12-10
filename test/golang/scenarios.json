@@ -1,0 +1,10 @@
+{
+    "values_changed": {
+            "image": "quay.io/fedora/fedora-minimal:latest",
+            "features": {
+                "go-lang":{
+                    "version": "1.21.4"
+                }
+            }
+    }
+}

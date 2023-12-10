@@ -16,6 +16,7 @@ source dev-container-features-test-lib
 # Check REMOTE_USER home directory and settings
 check "Create vscode" [ $(cat /etc/passwd | grep vscode) ]
 check "Create home directory " [ "$(ls /home/vscode/.local/)" ]
+check "GO in path" [ "$(go version)" ]
 # check "Can use DNF to install packages" [ $(which dnf) ]
 echo -e "\n"
 # Report result
