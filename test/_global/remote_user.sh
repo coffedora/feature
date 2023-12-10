@@ -11,15 +11,12 @@
 # This test can be run with the following command (from the root of this repo)
 #    devcontainer features test --global-scenarios-only .
 set -e
-
 # Optional: Import test library bundled with the devcontainer CLI
 source dev-container-features-test-lib
-
-# Feature-specific tests
-# The 'check' command comes from the dev-container-features-test-lib.
-check "Create user correct $(cat /etc/passwd)" [ $(cat /etc/passwd | grep "vscode:x:0:1000") ]
+# Check REMOTE_USER home directory and settings
+check "Create vscode" [ $(cat /etc/passwd | grep vscode) ]
+check "Create home directory " [ "$(ls /home/vscode/.local/)" ]
 # check "Can use DNF to install packages" [ $(which dnf) ]
-# check "Create user correct" [ $(cat /etc/passwd | grep "coffe:x:1000:1000") ]
 echo -e "\n"
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.

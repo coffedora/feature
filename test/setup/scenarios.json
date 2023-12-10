@@ -1,11 +1,10 @@
 {
-    "setup": {
-        "image": "quay.io/fedora/fedora-minimal:latest",
-        "features": {
-            "setup": {
-              "username": "vscode"
+    "all_values_changed": {
+            "image": "quay.io/fedora/fedora-minimal:latest",
+            "features": {
+                "setup": {
+                    "username":"testuser"
+                }
             }
-        },
-        "remoteUser":"vscode"
     }
 }

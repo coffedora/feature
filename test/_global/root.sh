@@ -11,14 +11,12 @@
 # This test can be run with the following command (from the root of this repo)
 #    devcontainer features test --global-scenarios-only .
 set -e
-
 # Optional: Import test library bundled with the devcontainer CLI
 source dev-container-features-test-lib
-
 # Feature-specific tests
-# The 'check' command comes from the dev-container-features-test-lib.
-check "Create user correct $(cat /etc/passwd)" [ $(cat /etc/passwd | grep "vscode:x:0:1000") ]
-# check "Can use DNF to install packages" [ $(which dnf) ]
+# Check system settings outside remoteUser home directory
+check "Fedora OS Release" [ $(cat /etc/os-release | grep "ID=fedora") ]
+check "DNF Available" [ "$(dnf --version)" ]
 # check "Create user correct" [ $(cat /etc/passwd | grep "coffe:x:1000:1000") ]
 echo -e "\n"
 # Report result
