@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# TLDR: all settings on default and remoteUser is root. 
 # This test file will be executed against an auto-generated devcontainer.json that
 # includes the 'color' Feature with no options.
 #
@@ -9,7 +9,7 @@
 # {
 #    "image": "<..some-base-image...>",
 #    "features": {
-#      "color": {}
+#      "setup": {}
 #    },
 #    "remoteUser": "root"
 # }
@@ -29,19 +29,15 @@
 #               --skip-scenarios   \
 #               --base-image mcr.microsoft.com/devcontainers/base:ubuntu \
 #               /path/to/this/repo
-
 set -e
-
 # Optional: Import test library bundled with the devcontainer CLI
-# See https://github.com/devcontainers/cli/blob/HEAD/docs/features/test.md#dev-container-features-test-lib
-# Provides the 'check' and 'reportResults' commands.
 source dev-container-features-test-lib
-
 # Feature-specific tests
-# The 'check' command comes from the dev-container-features-test-lib. Syntax is...
-# check <LABEL> <cmd> [args...]
-check "validate favorite color" color | grep 'my favorite color is red'
-
+# Check system settings outside remoteUser home directory
+check "Fedora OS Release" [ $(cat /etc/os-release | grep "ID=fedora") ]
+check "DNF Available" [ "$(dnf --version)" ]
+# check "Create user correct" [ $(cat /etc/passwd | grep "coffe:x:1000:1000") ]
+echo -e "\n"
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.
 reportResults

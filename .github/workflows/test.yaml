@@ -13,14 +13,11 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - setup
         baseImage:
-          - debian:latest
-          - ubuntu:latest
-          - mcr.microsoft.com/devcontainers/base:ubuntu
+          - quay.io/fedora/fedora-minimal:latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
@@ -34,8 +31,7 @@ jobs:
     strategy:
       matrix:
         features:
-          - color
-          - hello
+          - setup
     steps:
       - uses: actions/checkout@v3
 
@@ -49,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli

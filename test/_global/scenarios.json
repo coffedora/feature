@@ -1,13 +1,11 @@
 {
-    "color_and_hello": {
-        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "remote_user": {
+        "image": "quay.io/fedora/fedora-minimal:latest",
         "features": {
-            "color": {
-                "favorite": "purple"
-            },
-            "hello": {
-                "greeting": "Greetings"
+            "setup": {
+                "username":"vscode"
             }
-        }
+        },
+        "remoteUser": "vscode"
     }
 }
