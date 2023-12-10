@@ -41,9 +41,5 @@
     "securityOpt": [
         "seccomp=unconfined"
     ],
-    "dependsOn": {
-        "ghcr.io/coffedora/feature/setup": {
-            "username": "root"
-        }
-    }
+    "installsAfter ":["ghcr.io/coffedora/feature/setup"]
 }
