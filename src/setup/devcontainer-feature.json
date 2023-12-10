@@ -1,0 +1,28 @@
+{
+    "id": "setup",
+    "name": "setup Fedora Environment 🧊☕️🪶",
+    "version": "0.2.0",
+    "description": "etup your Fedora devcontainer Environment",
+    "options": {
+      "username": {
+          "type": "string",
+          "description": "Auto use existing user with home dir or create remote-user",
+          "default": "automatic"
+      },
+        "copr": {
+            "type": "string",
+            "description": "Add Copr Repositories.automatic Recognizes ENV variables of packages to add their copr repos",
+            "default": "automatic"
+        },
+        "install": {
+            "type": "string",
+            "description": "packages installed by default separated by whitespaces. automatic installs requirements including those of other settings ",
+            "default": "automatic"
+        },
+        "remove": {
+            "type": "string",
+            "description": "Remove packages from Image",
+            "default": "automatic"
+        }
+    }
+}
