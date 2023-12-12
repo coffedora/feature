@@ -22,4 +22,5 @@ check "Create vscode $(cat /etc/passwd)" [ "$(cat /etc/passwd | grep 'vscode')" 
 # echo -e "\n"
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.
+check "Coffedora-feature-setup.sh Persisted" [ "$(ls /usr/local/lib/coffedora-feature-setup.sh)" ]
 reportResults
