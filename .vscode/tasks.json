@@ -6,6 +6,7 @@
 		"focus": false,
 		"revealProblems": "onProblem"
 	},
+	"problemMatcher": [],
 	"windows": {
 		"options": {
 			"shell": {
@@ -25,7 +26,21 @@
 			"label": "cleanup",
 			"type": "shell",
 			"command": "rm -rdf /tmp/devcontainercli/ | true && rm -rdf /tmp/${feature} | true && docker rm -vf $(docker ps -aq) |true ",
-			"problemMatcher": []
+		},
+		{
+			"label": "act test",
+			"type": "shell",
+			"command": "act",
+			"args": [
+				"--pull=false",
+				"--workflows",".github/workflows/validate.yml",
+				"--actor","$GITHUB_USERNAME",
+				"--dryrun"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
 		},
 		{
 			"label": "connect",
@@ -60,14 +75,13 @@
 			"label": "test-global",
 			"type": "shell",
 			"command": "devcontainer features test --global-scenarios-only .",
-			"dependsOn": [
-				"cleanup"
-			],
 			"group": {
 				"kind": "test",
-				"isDefault": true
+				"isDefault": false
 			},
-			"problemMatcher": []
+			"dependsOn": [
+				"cleanup"
+			]
 		}
 	]
 }
