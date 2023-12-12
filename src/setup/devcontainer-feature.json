@@ -25,8 +25,8 @@
             "default": "automatic"
         }
     },
-    "remoteEnv": {
-		"GITHUB_USERNAME": "${containerEnv:GITHUB_USERNAME}${localEnv:GITHUB_USERNAME}",
-		"GH_TOKEN": "${containerEnv:GH_TOKEN}${localEnv:GH_TOKEN}"
+    "containerEnv": {
+		"GITHUB_USERNAME": "${localEnv:GITHUB_USERNAME}",
+		"GH_TOKEN": "${localEnv:GH_TOKEN}"
 	}
 }
