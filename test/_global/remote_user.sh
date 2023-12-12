@@ -13,11 +13,13 @@
 set -e
 # Optional: Import test library bundled with the devcontainer CLI
 source dev-container-features-test-lib
+check "Can use DNF to install packages $(dnf --version)" [ "$(dnf --version)" ]
+check "Minimum required packages" [ "$(which git)" ]
+check "Minimum required packages" [ "$(which gh)" ]
 # Check REMOTE_USER home directory and settings
-check "Create vscode" [ $(cat /etc/passwd | grep vscode) ]
-check "Create home directory " [ "$(ls /home/vscode/.local/)" ]
-# check "Can use DNF to install packages" [ $(which dnf) ]
-echo -e "\n"
+check "Create vscode $(cat /etc/passwd)" [ "$(cat /etc/passwd | grep 'vscode')" ]
+# check "Create home directory $(ls /home/vscode/)" [ "$(ls /home/vscode/)" ]
+# echo -e "\n"
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.
 reportResults

@@ -14,7 +14,7 @@
             "description": "Add Copr Repositories.automatic Recognizes ENV variables of packages to add their copr repos",
             "default": "automatic"
         },
-        "install": {
+        "dnfInstall": {
             "type": "string",
             "description": "packages installed by default separated by whitespaces. automatic installs requirements including those of other settings ",
             "default": "automatic"
