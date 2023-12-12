@@ -24,9 +24,5 @@
             "description": "Remove packages from Image",
             "default": "automatic"
         }
-    },
-    "containerEnv": {
-		"GITHUB_USERNAME": "${localEnv:GITHUB_USERNAME}",
-		"GH_TOKEN": "${localEnv:GH_TOKEN}"
-	}
+    }
 }
