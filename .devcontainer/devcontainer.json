@@ -41,7 +41,7 @@
 				"dbaeumer.vscode-eslint",
 				"foxundermoon.shell-format",
 				"GitHub.copilot",
-				"EditorConfig.EditorConfig",
+				"GitHub.vscode-github-actions",
 				"GitHub.vscode-pull-request-github"
 			]
 		}
