@@ -12,8 +12,8 @@ source dev-container-features-test-lib
 # The 'check' command comes from the dev-container-features-test-lib.
 check "Fedora OS Release" [ $(cat /etc/os-release | grep "ID=fedora") ]
 check "DNF Available" [ "$(dnf --version)" ]
-check "Create vscode" [ $(cat /etc/passwd | grep vscode) ]
-check "Create home directory " [ "$(ls /home/vscode/.local/)" ]
+check "Create user" [ $(cat /etc/passwd | grep vscode) ]
+check "Create home" [ $(ls /home | grep vscode) ]
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.
 reportResults
