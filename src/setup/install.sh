@@ -10,9 +10,11 @@ DNF_INSTALL="${DNFINSTALL:-"automatic"}"
 DNF_COPR="${COPR:-"automatic"}"
 DNF_REMOVE="${REMOVE:-"automatic"}"
 # Main script bootstraps the environment and then executes
-echo -e 'source ./lib/shared-lib.sh'
-source ./lib.sh || $(echo -e "lib.sh not found" && exit 1)
-detectUser
-createUser
-configUser
-dnfInstall $DNF_INSTALL
+source ./setup.sh || $(echo -e "lib.sh not found" && exit 1)
+echo -e 'Run coffedora-feature-setup.sh'
+cp ./setup.sh /usr/local/lib/coffedora-feature-setup.sh
+chmod +x /usr/local/lib/coffedora-feature-setup.sh
+detectUser && echo -e "User detected: $USERNAME\nUID"
+createUser && echo -e "User created: $USER_UID\nGID: $USER_GID"
+configUser && echo -e "Userhome configured: $(ls /home)"
+dnfInstall $DNF_INSTALL && echo -e "Packages installed: $DNF_INSTALL"
