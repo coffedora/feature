@@ -13,7 +13,7 @@ dnfInstall() {
     # skip if $@" is "automatic" or empty exit function
     if [ "$@" = "automatic" ] || [ "$@" = "" ]; then
         echo -e "No packages to install"
-        exit 0
+        return 0
     fi
   mapfile -d ' ' dnfPackages  < <(echo "$@")
   for package in "${dnfPackages[@]}"; do
