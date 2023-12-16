@@ -22,11 +22,11 @@ REQUIREMENTS="\
 # setup.sh script
 source ./setup.sh || $(echo -e "setup.sh not found" && exit 1)  
 dnfInstall $REQUIREMENTS  && echo -e "Packages installed: $REQUIREMENTS"
-languageSupport $LANGUAGE_SUPPORT && echo -e "Language support installed: $LANGUAGE_SUPPORT"
 detectUser && echo -e "User detected: $USERNAME\nUID"
 createUser && echo -e "User created: $USER_UID\nGID: $USER_GID"
 configUser && echo -e "Userhome configured: $(ls /home)"
 dnfInstall $DNF_INSTALL && echo -e "Packages installed: $DNF_INSTALL"
 
+languageSupport $LANGUAGE_SUPPORT && echo -e "Language support installed: $LANGUAGE_SUPPORT"
 
 # Source additional scripts

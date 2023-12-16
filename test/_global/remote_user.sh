@@ -17,7 +17,8 @@ check "Can use DNF to install packages $(dnf --version)" [ "$(dnf --version)" ]
 check "Minimum required packages" [ "$(which git)" ]
 check "user required packages (gh)" [ "$(which gh)" ]
 # Check REMOTE_USER home directory and settings
-check "Create coffe $(cat /etc/passwd)" [ "$(cat /etc/passwd | grep 'coffe')" ]
+check "Create user coffe" [ $(cat /etc/passwd | grep coffe) ]
+check "Create home" [ $(ls /home | grep coffe) ]
 check "Go $(go version)" [ "$(go version)" ]
 # check "Create home directory $(ls /home/vscode/)" [ "$(ls /home/vscode/)" ]
 echo -e "\n"

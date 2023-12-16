@@ -1,5 +1,5 @@
 {
-    "remote_user": {
+    "all_values_changed": {
         "image": "quay.io/fedora/fedora-minimal:latest",
         "features": {
             "setup": {
