@@ -4,7 +4,6 @@
         "features": {
             "setup": {
                 "username":"vscode",
-                "dnfInstall":"gh",
                 "languageSupport": "go"
             }
         },

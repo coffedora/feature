@@ -12,6 +12,7 @@ source dev-container-features-test-lib
 # The 'check' command comes from the dev-container-features-test-lib.
 check "Fedora OS Release" [ $(cat /etc/os-release | grep "ID=fedora") ]
 check "DNF Available" [ "$(dnf --version)" ]
+check "Go $(go version)" [ "$(go version)" ]
 check "Create user" [ $(cat /etc/passwd | grep vscode) ]
 check "Create home" [ $(ls /home | grep vscode) ]
 # Report result
