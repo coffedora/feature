@@ -23,6 +23,31 @@
             "type": "string",
             "description": "Remove packages from Image",
             "default": "automatic"
+        },
+        "languageSupport": {
+            "type": "string",
+            "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
+            "default": "go"
+        }
+
+    },
+    "containerEnv": {
+        "GOROOT": "/usr/local/go",
+        "GOPATH": "/go",
+        "PATH": "/usr/local/go/bin:/go/bin:${PATH}"
+    },
+    "capAdd": [
+        "SYS_PTRACE"
+    ],
+    "securityOpt": [
+        "seccomp=unconfined"
+    ],
+    "init": true,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.Go"
+            ]
         }
     }
 }

@@ -1,14 +1,10 @@
 #!/bin/bash
 # User Script variables
+set -e
 USERNAME="${USERNAME:-"automatic"}"
 USER_UID="${USERUID:-"automatic"}"
 USER_GID="${USERGID:-"automatic"}"
-REQUIREMENTS="\
-    coreutils iputils shadow-utils util-linux \
-    git gh gcc gcc++ sudo passwd cracklib-dicts \
-    procps procps-ng psmisc \
-    wget which tar xz unzip zip"
-    
+
 dnfInstall() {
   ln -s $(ls /bin/dnf* | head -n 1) /bin/dnf
   local DNF_INSTALLED=""
@@ -58,7 +54,6 @@ detectUser(){
     fi
 }
 createUser(){
-    dnfInstall $REQUIREMENTS
     # Create or update a non-root user to match UID/GID.
     group_name="${USERNAME}"
     if id -u ${USERNAME} > /dev/null 2>&1; then

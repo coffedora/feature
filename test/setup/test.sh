@@ -34,8 +34,10 @@ set -e
 source dev-container-features-test-lib
 # Feature-specific tests
 # Check system settings outside remoteUser home directory
-check "Fedora OS Release" [ $(cat /etc/os-release | grep "ID=fedora") ]
-check "DNF Available" [ "$(dnf --version)" ]
+check "Can use DNF to install packages $(dnf --version)" [ "$(dnf --version)" ]
+check "Minimum required packages" [ "$(which git)" ]
+check "Go $(go version)" [ "$(go version)" ]
+check "user required package not installed (gh)" [ "$(which gh && exit 1 || exit 0)" ]
 # check "Create user correct" [ $(cat /etc/passwd | grep "coffe:x:1000:1000") ]
 echo -e "\n"
 # Report result

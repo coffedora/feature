@@ -1,10 +1,13 @@
 {
-    "all_values_changed": {
-            "image": "quay.io/fedora/fedora-minimal:latest",
-            "features": {
-                "setup": {
-                    "username":"vscode"
-                }
+    "remote_user": {
+        "image": "quay.io/fedora/fedora-minimal:latest",
+        "features": {
+            "setup": {
+                "username":"vscode",
+                "dnfInstall":"gh",
+                "languageSupport": "go"
             }
+        },
+        "remoteUser": "vscode"
     }
 }

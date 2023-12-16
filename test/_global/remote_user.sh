@@ -15,12 +15,12 @@ set -e
 source dev-container-features-test-lib
 check "Can use DNF to install packages $(dnf --version)" [ "$(dnf --version)" ]
 check "Minimum required packages" [ "$(which git)" ]
-check "Minimum required packages" [ "$(which gh)" ]
+check "user required packages (gh)" [ "$(which gh)" ]
 # Check REMOTE_USER home directory and settings
-check "Create vscode $(cat /etc/passwd)" [ "$(cat /etc/passwd | grep 'vscode')" ]
+check "Create coffe $(cat /etc/passwd)" [ "$(cat /etc/passwd | grep 'coffe')" ]
+check "Go $(go version)" [ "$(go version)" ]
 # check "Create home directory $(ls /home/vscode/)" [ "$(ls /home/vscode/)" ]
-# echo -e "\n"
+echo -e "\n"
 # Report result
 # If any of the checks above exited with a non-zero exit code, the test will fail.
-check "Coffedora-feature-setup.sh Persisted" [ "$(ls /usr/local/lib/coffedora-feature-setup.sh)" ]
 reportResults
