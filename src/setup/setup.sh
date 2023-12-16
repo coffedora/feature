@@ -116,7 +116,7 @@ languageSupport(){
     else
         mapfile -d ' ' languageSupport  < <(echo "$@")
         for lang in "${languageSupport[@]}"; do    
-                source ./lang/${lang}.sh || $(echo -e "Language support not found")
+                source "./lang/$lang.sh" || $(echo -e ">$lang< - Language support not found")
         done
     fi
 }
