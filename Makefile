@@ -24,3 +24,67 @@ test_global:
 	devcontainer features test --global-scenarios-only .
 
 test: clean test_global
+
+
+# "tasks": [
+#     {
+#         "label": "make all",
+#         "command": "make",
+#         "type": "shell",
+#         "presentation": {
+#             "close": false
+#         },
+#         "group": {
+#             "kind": "build",
+#             "isDefault": false
+#         }
+#     },
+#     {
+#         "label": "make test",
+#         "command": "make",
+#         "type": "shell",
+#         "args": [
+#             "test"
+#         ],
+#         "presentation": {
+#             "close": false
+#         },
+#         "group": {
+#             "kind": "test",
+#             "isDefault": true
+#         }
+#     },
+#     {
+#         "label": "make clean",
+#         "command": "make",
+#         "type": "shell",
+#         "args": [
+#             "clean"
+#         ],
+#         "presentation": {
+#             "close": false
+#         },
+#         "group": {
+#             "kind": "none",
+#             "isDefault": false
+#         }
+#     },
+#     {
+#         "label": "make act",
+#         "command": "act",
+#         "type": "shell",
+#         "args": [
+#             "workflow_dispatch",
+#             "--pull=false",
+#             "--workflows=.github/workflows/validate.yml",
+#             "--actor=$GITHUB_USERNAME"
+#         ],
+#         "presentation": {
+#             "close": false
+#         },
+#         "group": {
+#             "kind": "none",
+#             "isDefault": false
+#         }
+#     }
+# ]

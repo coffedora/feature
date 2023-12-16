@@ -43,7 +43,6 @@
     ],
     "init": true,
 	"customizations": {
-		// Configure properties specific to VS Code.
 		"vscode": {
 			"extensions": [
                 "golang.Go",
@@ -54,21 +53,14 @@
 				"formulahendry.github-actions",
 				"ms-azuretools.vscode-docker"
 			],
-			// Applies only to vscode.  Downloads the repo into targetPath and runs  setup.sh to finalize the integration.  
 			"settings": {
-				// "dotfiles.repository": "${localEnv:GITHUB_USERNAMENAME}/dotfiles",
-				// "dotfiles.targetPath": "~/.local/share/chezmoi",
-				// "dotfiles.installCommand": "setup.sh",
-				// Recommended settings to apply when working in container. Change theme and font to your preference.
 					"files.autoSave": "afterDelay",
-					"workbench.colorTheme": "Catppuccin Mocha",
 					"editor.smoothScrolling": true,
 					"terminal.integrated.lineHeight": 1.5,
 					"editor.fontLigatures": true,
 					"editor.lineHeight": 1.5,
 					"editor.minimap.enabled": false,
 					"editor.tabSize": 2,
-					"workbench.iconTheme": "material-icon-theme",
 					"editor.semanticTokenColorCustomizations": {
 						"enabled": true
 					},
