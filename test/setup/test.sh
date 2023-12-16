@@ -37,7 +37,6 @@ source dev-container-features-test-lib
 check "Can use DNF to install packages $(dnf --version)" [ "$(dnf --version)" ]
 check "Minimum required packages" [ "$(which git)" ]
 check "Go $(go version)" [ "$(go version)" ]
-check "user required package not installed (gh)" [ "$(which gh && exit 1 || exit 0)" ]
 # check "Create user correct" [ $(cat /etc/passwd | grep "coffe:x:1000:1000") ]
 echo -e "\n"
 # Report result

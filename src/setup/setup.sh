@@ -103,3 +103,20 @@ configUser(){
     PATH="${user_home}/bin:${user_home}/.local/bin:${user_home}/.local/script:$PATH"
     # code shim for Fedora Container without the code binary 
 }
+languageSupport(){
+    local languageSupport=$1
+    # Install language support
+    if [ "${languageSupport}" == "automatic" ]; then
+        source ./lang/*.sh || $(echo -e "could not load languageSupport files")
+        return 0
+    elif [[ $lang =~ ^https://.*\.sh$ ]]; then
+        curl -sSL "$lang" -o temp.sh && source temp.sh || $(echo -e "Failed to download and load language support from $lang")
+        rm temp.sh
+        return 0
+    else
+        mapfile -d ' ' languageSupport  < <(echo "$@")
+        for lang in "${languageSupport[@]}"; do    
+                source ./lang/${lang}.sh || $(echo -e "Language support not found")
+        done
+    fi
+}
