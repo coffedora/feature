@@ -1,14 +1,14 @@
 {
     "id": "setup",
     "name": "setup Fedora Environment 🧊☕️🪶",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Setup your Fedora devcontainer Environment",
     "options": {
-      "username": {
-          "type": "string",
-          "description": "Auto use existing user with home dir or create remote-user",
-          "default": "automatic"
-      },
+        "userName": {
+            "type": "string",
+            "description": "Auto use existing user with home dir or create remote-user",
+            "default": "automatic"
+        },
         "copr": {
             "type": "string",
             "description": "Add Copr Repositories.automatic Recognizes ENV variables of packages to add their copr repos",
@@ -19,7 +19,7 @@
             "description": "packages installed by default separated by whitespaces. automatic installs requirements including those of other settings ",
             "default": "automatic"
         },
-        "remove": {
+        "dnfRemove": {
             "type": "string",
             "description": "Remove packages from Image",
             "default": "automatic"
@@ -42,35 +42,34 @@
         "seccomp=unconfined"
     ],
     "init": true,
-	"customizations": {
-		"vscode": {
-			"extensions": [
+    "customizations": {
+        "vscode": {
+            "extensions": [
                 "golang.Go",
-				"GitHub.copilot",
-				"GitHub.copilot-chat",
-				"yzhang.markdown-all-in-one",
-				"bierner.markdown-preview-github-styles",
-				"formulahendry.github-actions",
-				"ms-azuretools.vscode-docker"
-			],
-			"settings": {
-					"files.autoSave": "afterDelay",
-					"editor.smoothScrolling": true,
-					"terminal.integrated.lineHeight": 1.5,
-					"editor.fontLigatures": true,
-					"editor.lineHeight": 1.5,
-					"editor.minimap.enabled": false,
-					"editor.tabSize": 2,
-					"editor.semanticTokenColorCustomizations": {
-						"enabled": true
-					},
-					"editor.semanticHighlighting.enabled": true,
-					"files.eol": "\n",
-					"extensions.ignoreRecommendations": true,
-					"task.problemMatchers.neverPrompt": {
-						"shell": true
-					}
-			}
-		}
-	}
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "yzhang.markdown-all-in-one",
+                "formulahendry.github-actions",
+                "ms-azuretools.vscode-docker"
+            ],
+            "settings": {
+                "files.autoSave": "afterDelay",
+                "editor.smoothScrolling": true,
+                "terminal.integrated.lineHeight": 1.5,
+                "editor.fontLigatures": true,
+                "editor.lineHeight": 1.5,
+                "editor.minimap.enabled": false,
+                "editor.tabSize": 2,
+                "editor.semanticTokenColorCustomizations": {
+                    "enabled": true
+                },
+                "editor.semanticHighlighting.enabled": true,
+                "files.eol": "\n",
+                "extensions.ignoreRecommendations": true,
+                "task.problemMatchers.neverPrompt": {
+                    "shell": true
+                }
+            }
+        }
+    }
 }
