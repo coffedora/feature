@@ -58,7 +58,6 @@ Apply the template in a directory and edit the ARG in Dockerfile. YOu have also 
 		}
 ```
 ## VSCode Customizations
-```json
    "customizations": {
         "vscode": {
             "extensions": [
@@ -89,7 +88,7 @@ Apply the template in a directory and edit the ARG in Dockerfile. YOu have also 
             }
         }
     }
-```
+
 ---
 
 _Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/coffedora/feature/blob/main/src/setup/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
