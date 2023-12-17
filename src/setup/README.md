@@ -26,11 +26,13 @@ Setup your Fedora devcontainer Environment
 ### VS Code Extensions
 
 - `golang.Go`
+- `a-h.templ`
+- `quillaja.goasm`
 - `GitHub.copilot`
 - `GitHub.copilot-chat`
-- `yzhang.markdown-all-in-one`
 - `formulahendry.github-actions`
 - `ms-azuretools.vscode-docker`
+- `GitHub.vscode-pull-request-github`
 
 # Dev Container Templates: FEdora Based Devcontainer - Coffedora
 
