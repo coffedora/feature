@@ -97,7 +97,9 @@ configUser() {
     else
         user_home="/home/${USERNAME}"
         mkdir -p ${user_home} /workspaces/
-        chown ${USERNAME}:${USERNAME} /workspaces/ || echo "Failed adjust ownership" >&2
+        chown -R ${USERNAME}:${USERNAME} /home/* || echo "Failed adjust home ownership" >&2
+        chown -R ${USERNAME}:${USERNAME} /workspaces/ || echo "Failed adjust workspaces ownership" >&2
+        chown -R ${USERNAME}:${USERNAME} /usr/locale/bin || echo "Failed adjust usr/locale/bin usrownership" >&2
         # add $user_home/.local/bin to system path
     fi
     PATH="${user_home}/bin:${user_home}/.local/bin:${user_home}/.local/script:$PATH"
