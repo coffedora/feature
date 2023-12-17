@@ -23,6 +23,54 @@
             "type": "string",
             "description": "Remove packages from Image",
             "default": "automatic"
+        },
+        "languageSupport": {
+            "type": "string",
+            "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
+            "default": "automatic"
         }
-    }
+    },
+    "containerEnv": {
+        "GOROOT": "/usr/local/go",
+        "GOPATH": "/go",
+        "PATH": "/usr/local/go/bin:/go/bin:${PATH}"
+    },
+    "capAdd": [
+        "SYS_PTRACE"
+    ],
+    "securityOpt": [
+        "seccomp=unconfined"
+    ],
+    "init": true,
+	"customizations": {
+		"vscode": {
+			"extensions": [
+                "golang.Go",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"yzhang.markdown-all-in-one",
+				"bierner.markdown-preview-github-styles",
+				"formulahendry.github-actions",
+				"ms-azuretools.vscode-docker"
+			],
+			"settings": {
+					"files.autoSave": "afterDelay",
+					"editor.smoothScrolling": true,
+					"terminal.integrated.lineHeight": 1.5,
+					"editor.fontLigatures": true,
+					"editor.lineHeight": 1.5,
+					"editor.minimap.enabled": false,
+					"editor.tabSize": 2,
+					"editor.semanticTokenColorCustomizations": {
+						"enabled": true
+					},
+					"editor.semanticHighlighting.enabled": true,
+					"files.eol": "\n",
+					"extensions.ignoreRecommendations": true,
+					"task.problemMatchers.neverPrompt": {
+						"shell": true
+					}
+			}
+		}
+	}
 }

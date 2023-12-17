@@ -1,14 +1,10 @@
 #!/bin/bash
 # User Script variables
+set -e
 USERNAME="${USERNAME:-"automatic"}"
 USER_UID="${USERUID:-"automatic"}"
 USER_GID="${USERGID:-"automatic"}"
-REQUIREMENTS="\
-    coreutils iputils shadow-utils util-linux \
-    git gh gcc gcc++ sudo passwd cracklib-dicts \
-    procps procps-ng psmisc \
-    wget which tar xz unzip zip"
-    
+
 dnfInstall() {
   ln -s $(ls /bin/dnf* | head -n 1) /bin/dnf
   local DNF_INSTALLED=""
@@ -17,7 +13,7 @@ dnfInstall() {
     # skip if $@" is "automatic" or empty exit function
     if [ "$@" = "automatic" ] || [ "$@" = "" ]; then
         echo -e "No packages to install"
-        exit 0
+        return 0
     fi
   mapfile -d ' ' dnfPackages  < <(echo "$@")
   for package in "${dnfPackages[@]}"; do
@@ -58,7 +54,6 @@ detectUser(){
     fi
 }
 createUser(){
-    dnfInstall $REQUIREMENTS
     # Create or update a non-root user to match UID/GID.
     group_name="${USERNAME}"
     if id -u ${USERNAME} > /dev/null 2>&1; then
@@ -107,4 +102,15 @@ configUser(){
     fi
     PATH="${user_home}/bin:${user_home}/.local/bin:${user_home}/.local/script:$PATH"
     # code shim for Fedora Container without the code binary 
+}
+languageSupport(){
+    # Install language support
+    if [ "$@" == "automatic" ]; then
+        source ./lang/*.sh || $(echo -e "could not load languageSupport files")
+    elif [[ "$@" =~ ^https://.*\.sh$ ]]; then
+        curl -sSL "$@" -o temp.sh && source temp.sh || $(echo -e "Failed to download and load language support from $lang")
+        rm temp.sh
+    else
+        source ./lang/$@.sh
+    fi
 }
