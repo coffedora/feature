@@ -36,7 +36,6 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-vscode.makefile-tools",
 				"yzhang.markdown-all-in-one",
 				"mads-hartmann.bash-ide-vscode",
 				"dbaeumer.vscode-eslint",
