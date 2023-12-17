@@ -12,11 +12,10 @@ DNF_INSTALL="${DNFINSTALL:-"automatic"}"
 DNF_COPR="${COPR:-"automatic"}"
 DNF_REMOVE="${DNFREMOVE:-"automatic"}"
 
-
 REQUIREMENTS="\
     coreutils iputils shadow-utils util-linux \
     git gh gcc sudo passwd cracklib-dicts\
-    procps procps-ng psmisc \
+    procps procps-ng psmisc fontconfig\
     wget which tar xz unzip"
 
 # setup.sh script

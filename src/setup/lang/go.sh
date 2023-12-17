@@ -173,12 +173,9 @@ GO_TOOLS="\
     github.com/cweill/gotests/gotests@latest \ 
     github.com/kisielk/errcheck@latest \
     github.com/josharian/impl@latest \
-    github.com/spf13/cobra-cli@latest \
     github.com/cosmtrek/air@latest \
     github.com/labstack/echo/v4 \
     github.com/a-h/templ/cmd/templ@latest \
-    github.com/pocketbase/pocketbase@latest \
-    github.com/melkeydev/go-blueprint@latest"
 if [ "${INSTALL_GO_TOOLS}" = "true" ]; then
     echo "Installing common Go tools..."
     export PATH=${TARGET_GOROOT}/bin:${PATH}

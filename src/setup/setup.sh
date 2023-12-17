@@ -83,7 +83,7 @@ createUser() {
     # Add sudo support for non-root user
     if [ "${USERNAME}" != "root" ] && [ "${EXISTING_NON_ROOT_USER}" != "${USERNAME}" ]; then
         usermod -aG wheel ${USERNAME} || echo "Failed  to add ${USERNAME} to wheel" >&2
-        echo $USERNAME ALL=\(wheel\) NOPASSWD:ALL >/etc/sudoers.d/$USERNAME
+        echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USERNAME
         chmod 0440 /etc/sudoers.d/$USERNAME || echo "Failed chmod" >&2
         EXISTING_NON_ROOT_USER="${USERNAME}"
         passwd -d ${USERNAME} || echo "Failed remove passwd" >&2
@@ -97,6 +97,7 @@ configUser() {
     else
         user_home="/home/${USERNAME}"
         mkdir -p ${user_home} /workspaces/
+        ln -s /workspaces ${user_home}/Workspace
         chown -R ${USERNAME}:${USERNAME} /home/* || echo "Failed adjust home ownership" >&2
         chown -R ${USERNAME}:${USERNAME} /workspaces/ || echo "Failed adjust workspaces ownership" >&2
         chown -R ${USERNAME}:${USERNAME} /usr/locale/bin || echo "Failed adjust usr/locale/bin usrownership" >&2

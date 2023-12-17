@@ -1,7 +1,7 @@
 {
     "id": "setup",
     "name": "setup Fedora Environment 🧊☕️🪶",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Setup your Fedora devcontainer Environment",
     "options": {
         "userName": {
@@ -33,7 +33,9 @@
     "containerEnv": {
         "GOROOT": "/usr/local/go",
         "GOPATH": "/go",
-        "PATH": "/usr/local/go/bin:/go/bin:${PATH}"
+        "PATH": "/usr/local/go/bin:/go/bin:${PATH}",
+        "GH_TOKEN": "${localEnv:GH_TOKEN}",
+		"GITHUB_USERNAME": "${localEnv:GITHUB_USERNAME}"
     },
     "capAdd": [
         "SYS_PTRACE"
@@ -46,11 +48,13 @@
         "vscode": {
             "extensions": [
                 "golang.Go",
+                "a-h.templ",
+				"quillaja.goasm",
                 "GitHub.copilot",
                 "GitHub.copilot-chat",
-                "yzhang.markdown-all-in-one",
                 "formulahendry.github-actions",
-                "ms-azuretools.vscode-docker"
+                "ms-azuretools.vscode-docker",
+                "GitHub.vscode-pull-request-github"
             ],
             "settings": {
                 "files.autoSave": "afterDelay",
