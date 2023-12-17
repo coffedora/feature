@@ -15,7 +15,7 @@ DNF_REMOVE="${DNFREMOVE:-"automatic"}"
 
 REQUIREMENTS="\
     coreutils iputils shadow-utils util-linux \
-    git gcc sudo passwd cracklib-dicts\
+    git gh gcc sudo passwd cracklib-dicts\
     procps procps-ng psmisc \
     wget which tar xz unzip"
 
