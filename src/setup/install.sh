@@ -10,14 +10,14 @@ LANGUAGE_SUPPORT="${LANGUAGESUPPORT:-"automatic"}"
 # Lists of DNF packages and repositories to add/remove   
 DNF_INSTALL="${DNFINSTALL:-"automatic"}"
 DNF_COPR="${COPR:-"automatic"}"
-DNF_REMOVE="${REMOVE:-"automatic"}"
+DNF_REMOVE="${DNFREMOVE:-"automatic"}"
 
 
 REQUIREMENTS="\
     coreutils iputils shadow-utils util-linux \
-    git gh gcc gcc++ sudo passwd cracklib-dicts \
+    git gcc sudo passwd cracklib-dicts\
     procps procps-ng psmisc \
-    wget which tar xz unzip zip"
+    wget which tar xz unzip"
 
 # setup.sh script
 source ./setup.sh || $(echo -e "setup.sh not found" && exit 1)  

@@ -6,30 +6,30 @@ USER_UID="${USERUID:-"automatic"}"
 USER_GID="${USERGID:-"automatic"}"
 
 dnfInstall() {
-  ln -s $(ls /bin/dnf* | head -n 1) /bin/dnf
-  local DNF_INSTALLED=""
-  local DNF_FAILED=""
-  local dnfPackages=""
+    ln -s $(ls /bin/dnf* | head -n 1) /bin/dnf
+    local DNF_INSTALLED=""
+    local DNF_FAILED=""
+    local dnfPackages=""
     # skip if $@" is "automatic" or empty exit function
     if [ "$@" = "automatic" ] || [ "$@" = "" ]; then
         echo -e "No packages to install"
         return 0
     fi
-  mapfile -d ' ' dnfPackages  < <(echo "$@")
-  for package in "${dnfPackages[@]}"; do
-      dnf install -y $package && DNF_INSTALLED="${DNF_INSTALLED} $package"|| DNF_FAILED="${DNF_FAILED} $package"
-  done
-  echo -e "Cleanup..."
-  dnf clean all
-  rm -rfd /var/cache/*
-  echo -e "n\
+    mapfile -d ' ' dnfPackages < <(echo "$@")
+    for package in "${dnfPackages[@]}"; do
+        dnf install -y $package && DNF_INSTALLED="${DNF_INSTALLED} $package" || DNF_FAILED="${DNF_FAILED} $package"
+    done
+    echo -e "Cleanup..."
+    dnf clean all
+    rm -rfd /var/cache/*
+    echo -e "n\
   DNF_INSTALLED: ${DNF_INSTALLED}\n\
   DNF_FAILED: ${DNF_FAILED}\n\
   DNF_BINARY: $(ls /bin/dnf* | head -n 1)"
-  echo -e "Done!"
+    echo -e "Done!"
 }
 
-detectUser(){
+detectUser() {
     # If in automatic mode, determine if a user already exists, if not use vscode
     if [ "${USERNAME}" = "auto" ] || [ "${USERNAME}" = "automatic" ]; then
         if [ "${_REMOTE_USER}" != "root" ]; then
@@ -38,7 +38,7 @@ detectUser(){
             USERNAME=""
             POSSIBLE_USERS=("devcontainer" "vscode" "node" "codespace" "$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)")
             for CURRENT_USER in "${POSSIBLE_USERS[@]}"; do
-                if id -u ${CURRENT_USER} > /dev/null 2>&1; then
+                if id -u ${CURRENT_USER} >/dev/null 2>&1; then
                     USERNAME=${CURRENT_USER}
                     break
                 fi
@@ -53,10 +53,10 @@ detectUser(){
         USER_GID=0
     fi
 }
-createUser(){
+createUser() {
     # Create or update a non-root user to match UID/GID.
     group_name="${USERNAME}"
-    if id -u ${USERNAME} > /dev/null 2>&1; then
+    if id -u ${USERNAME} >/dev/null 2>&1; then
         # User exists, update if needed
         if [ "${USER_GID}" != "automatic" ] && [ "$USER_GID" != "$(id -g $USERNAME)" ]; then
             group_name="$(id -gn $USERNAME)"
@@ -83,7 +83,7 @@ createUser(){
     # Add sudo support for non-root user
     if [ "${USERNAME}" != "root" ] && [ "${EXISTING_NON_ROOT_USER}" != "${USERNAME}" ]; then
         usermod -aG wheel ${USERNAME} || echo "Failed  to add ${USERNAME} to wheel" >&2
-        echo $USERNAME ALL=\(wheel\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
+        echo $USERNAME ALL=\(wheel\) NOPASSWD:ALL >/etc/sudoers.d/$USERNAME
         chmod 0440 /etc/sudoers.d/$USERNAME || echo "Failed chmod" >&2
         EXISTING_NON_ROOT_USER="${USERNAME}"
         passwd -d ${USERNAME} || echo "Failed remove passwd" >&2
@@ -91,19 +91,19 @@ createUser(){
     fi
 }
 
-configUser(){
+configUser() {
     if [ "${USERNAME}" = "root" ]; then
-      user_home="/root"
+        user_home="/root"
     else
-      user_home="/home/${USERNAME}"
-      mkdir -p ${user_home} /workspaces/
-      chown ${USERNAME}:${USERNAME} /workspaces/  || echo "Failed adjust ownership" >&2
-      # add $user_home/.local/bin to system path
+        user_home="/home/${USERNAME}"
+        mkdir -p ${user_home} /workspaces/
+        chown ${USERNAME}:${USERNAME} /workspaces/ || echo "Failed adjust ownership" >&2
+        # add $user_home/.local/bin to system path
     fi
     PATH="${user_home}/bin:${user_home}/.local/bin:${user_home}/.local/script:$PATH"
-    # code shim for Fedora Container without the code binary 
+    # code shim for Fedora Container without the code binary
 }
-languageSupport(){
+languageSupport() {
     # Install language support
     if [ "$@" == "automatic" ]; then
         source ./lang/*.sh || $(echo -e "could not load languageSupport files")

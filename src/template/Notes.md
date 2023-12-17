@@ -14,15 +14,15 @@ npm install -g @devcontainers/cli
 
 ## How to get the Template in my project
 Apply the template in a directory and edit the ARG in Dockerfile. YOu have also to adjust the name in the devcontainer.json
-```json
-		"ghcr.io/coffedora/feature/setup:latest": {
-			"userName": "automatic",
-			"copr": "automatic",
-			"dnfInstall": "automatic",
-			"dnfRemove": "automatic",
-			"languageSupport": "automatic"
-		}
+```powershell
+devcontainer templates apply -t 'ghcr.io/coffedora/feature/template:latest' 
 ```
+## Options
+"userName": "${localEnv:GH_TOKEN}${templateOption:userName}",
+"copr": "${templateOption:copr}",
+"dnfInstall": "${templateOption:dnfInstall}",
+"dnfRemove": "${templateOption:dnfRemove}",
+"languageSupport": "${templateOption:languageSupport}"
 ## VSCode Customizations
    "customizations": {
         "vscode": {

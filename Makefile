@@ -25,6 +25,16 @@ test_global:
 
 test: clean test_global
 
+smoke:
+	rm -rdf /tmp/init
+	rm -rdf /tmp/home
+	@docker rmi $(docker images -q --filter=reference="vsc-home*" --format "{{.ID}}") -f  &&\
+	rm -rdf /tmp/init &&\
+	rm -rdf /tmp/home || true
+	docker volume prune -f
+	@echo "Local Smoketest..."
+	.github/actions/smoke-test/build.sh home
+	.github/actions/smoke-test/test.sh home
 
 # "tasks": [
 #     {
