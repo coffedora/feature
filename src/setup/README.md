@@ -20,7 +20,7 @@ Setup your Fedora devcontainer Environment
 | dnfInstall | packages installed by default separated by whitespaces. automatic installs requirements including those of other settings  | string | automatic |
 | dnfRemove | Remove packages from Image | string | automatic |
 | languageSupport | Install additional language support. Language Support is distributed in own scripts(Currently only for go) | string | automatic |
-| installHomebrew | Install additional language support. Language Support is distributed in own scripts(Currently only for go) | string | automatic |
+| installHomebrew | Install additional package Manager () | string | automatic |
 
 ## Customizations
 
