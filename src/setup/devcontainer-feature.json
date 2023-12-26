@@ -28,6 +28,11 @@
             "type": "string",
             "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
             "default": "automatic"
+        },
+        "installHomebrew": {
+            "type": "string",
+            "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
+            "default": "automatic"
         }
     },
     "containerEnv": {

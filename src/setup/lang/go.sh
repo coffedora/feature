@@ -175,7 +175,9 @@ GO_TOOLS="\
     github.com/josharian/impl@latest \
     github.com/cosmtrek/air@latest \
     github.com/labstack/echo/v4 \
-    github.com/a-h/templ/cmd/templ@latest"
+    github.com/pocketbase/pocketbase@latest \
+    github.com/a-h/templ/cmd/templ@latest" \
+
 if [ "${INSTALL_GO_TOOLS}" = "true" ]; then
     echo "Installing common Go tools..."
     export PATH=${TARGET_GOROOT}/bin:${PATH}

@@ -4,7 +4,9 @@
         "features": {
             "setup": {
                 "username":"vscode",
-                "languageSupport": "go"
+                "languageSupport": "go",
+                "installHomebrew": "nvim",
+                "WSLCONFIG":"false"
             }
         },
         "remoteUser": "vscode"

@@ -4,7 +4,7 @@
         "features": {
             "setup": {
                 "username":"coffe",
-                "dnfInstall":"gh"
+                "installHomebrew": "nvim"
             }
         },
         "remoteUser": "coffe"

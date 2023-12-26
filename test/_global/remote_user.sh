@@ -20,6 +20,8 @@ check "user required packages (gh)" [ "$(which gh)" ]
 check "Create user coffe" [ $(cat /etc/passwd | grep coffe) ]
 check "Create home" [ $(ls /home | grep coffe) ]
 check "Go $(go version)" [ "$(go version)" ]
+check "Brew in Path $(echo $PATH)" [ "$(echo $PATH | grep "brew")" ]
+check "WSL Config Created" [ $(cat /etc/wsl.conf | grep coffe) ]
 # check "Create home directory $(ls /home/vscode/)" [ "$(ls /home/vscode/)" ]
 echo -e "\n"
 # Report result

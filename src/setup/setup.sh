@@ -4,14 +4,14 @@ set -e
 USERNAME="${USERNAME:-"automatic"}"
 USER_UID="${USERUID:-"automatic"}"
 USER_GID="${USERGID:-"automatic"}"
-
+INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"automatic"}"
 dnfInstall() {
     ln -s $(ls /bin/dnf* | head -n 1) /bin/dnf
     local DNF_INSTALLED=""
     local DNF_FAILED=""
     local dnfPackages=""
     # skip if $@" is "automatic" or empty exit function
-    if [ "$@" = "automatic" ] || [ "$@" = "" ]; then
+    if [ "$@" = "" ]; then
         echo -e "No packages to install"
         return 0
     fi
@@ -31,9 +31,10 @@ dnfInstall() {
 
 detectUser() {
     # If in automatic mode, determine if a user already exists, if not use vscode
-    if [ "${USERNAME}" = "auto" ] || [ "${USERNAME}" = "automatic" ]; then
+    if [ "${USERNAME}" = "automatic" ]; then
         if [ "${_REMOTE_USER}" != "root" ]; then
             USERNAME="${_REMOTE_USER}"
+            break
         else
             USERNAME=""
             POSSIBLE_USERS=("devcontainer" "vscode" "node" "codespace" "$(awk -v val=1000 -F ":" '$3==val{print $1}' /etc/passwd)")
@@ -114,6 +115,57 @@ languageSupport() {
         curl -sSL "$@" -o temp.sh && source temp.sh || $(echo -e "Failed to download and load language support from $lang")
         rm temp.sh
     else
-        source ./lang/$@.sh
+       source ./lang/$@.sh
     fi
+}
+homebrewSupport() {
+    local homebrew_formulae="gcc starship tailwindcss"
+    if  [[ $INSTALL_HOMEBREW == "false" ]]; then
+        echo "Skip Homebrew installation"
+    else
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"')>> /etc/bash.bashrc
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') > /etc/profile.d/brew.sh
+        chown -R ${USERNAME}:${USERNAME} /home/linuxbrew/.linuxbrew  
+    fi
+}
+wslConfig() {
+if  [[ $@ == "false" ]]; then
+    echo "Skip WSL Interop Settings"
+else
+echo "WSL Interop Settings"
+dnf install -y docker
+cat << 'EOF' > /etc/wsl.conf
+[boot]
+systemd=true
+# Set a command to run when a new WSL instance launches. This example starts the Docker container service.
+command = service docker start
+# Automatically mount Windows drive when the distribution is launched
+[automount]
+# Set to true will automount fixed drives (C:/ or D:/) with DrvFs under the root directory set above. Set to false means drives won't be mounted automatically, but need to be mounted manually or with fstab.
+enabled = true
+# Sets the directory where fixed drives will be automatically mounted. This example changes the mount location, so your C-drive would be /c, rather than the default /mnt/c. 
+root = /mnt/
+# Sets the `/etc/fstab` file to be processed when a WSL distribution is launched.
+mountFsTab = true
+# Network host settings that enable the DNS server used by WSL 2. This example changes the hostname, sets generateHosts to false, preventing WSL from the default behavior of auto-generating /etc/hosts, and sets generateResolvConf to false, preventing WSL from auto-generating /etc/resolv.conf, so that you can create your own (ie. nameserver 1.1.1.1).
+[network]
+# hostname to be used for WSL distribution. Windows hostname is default
+hostname = wsl
+generateHosts = true
+generateResolvConf = true
+# Set whether WSL supports interop process like launching Windows apps and adding path variables. Setting these to false will block the launch of Windows processes and block adding $PATH environment variables.
+[interop]
+# Setting this key will determine whether WSL will support launching Windows processes.
+enabled = true
+# Setting this key will determine whether WSL will add Windows path elements to the $PATH environment variable.
+appendWindowsPath = true
+EOF
+   if [ "${USERNAME}" != "root" ]; then
+        #append on  .wsl.conf with default values to enable login with default user
+        echo "[user]" >> /etc/wsl.conf
+        echo "default=${USERNAME}" >> /etc/wsl.conf
+        # create workspace directory in root and make root and $USERNAME the owner
+    fi
+fi
 }
