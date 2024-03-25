@@ -1,13 +1,13 @@
 
-# setup Fedora Environment for Go Developer 🧊☕️🪶 (golang)
+# Fedora Golang Developer Enviroment🧊☕️🪶 (golang)
 
-Setup your Fedora devcontainer Environment
+Setup Fedora Environment for Development with Golang
 
 ## Example Usage
 
 ```json
 "features": {
-    "ghcr.io/coffedora/feature/setup:0": {}
+    "ghcr.io/coffedora/feature/golang:0": {}
 }
 ```
 
@@ -20,18 +20,21 @@ Setup your Fedora devcontainer Environment
 | dnfInstall | packages installed by default separated by whitespaces. automatic installs requirements including those of other settings  | string | automatic |
 | dnfRemove | Remove packages from Image | string | automatic |
 | languageSupport | Install additional language support. Language Support is distributed in own scripts(Currently only for go) | string | automatic |
-| installHomebrew | Install additional package Manager () | string | automatic |
+| installHomebrew | Install Homebrew as additional package manager | string | automatic |
+| installGoPkg | Install additional go packages separated by whitespaces | string | automatic |
 
 ## Customizations
 
 ### VS Code Extensions
 
 - `golang.Go`
-- `a-h.templ`
 - `quillaja.goasm`
+- `a-h.templ`
 - `GitHub.copilot`
 - `GitHub.copilot-chat`
-- `formulahendry.github-actions`
+- `github.vscode-github-actions`
+- `discretegames.f5anything`
+- `redhat.ansible`
 - `ms-azuretools.vscode-docker`
 - `GitHub.vscode-pull-request-github`
 
@@ -57,7 +60,8 @@ Apply the template in a directory and edit the ARG in Dockerfile. YOu have also 
 			"copr": "automatic",
 			"dnfInstall": "automatic",
 			"dnfRemove": "automatic",
-			"languageSupport": "automatic"
+			"languageSupport": "automatic",
+            "installGoPkg": "automatic",
 		}
 ```
 ## VSCode Customizations
@@ -94,4 +98,4 @@ Apply the template in a directory and edit the ARG in Dockerfile. YOu have also 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/coffedora/feature/blob/main/src/setup/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/coffedora/feature/blob/main/src/golang/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
