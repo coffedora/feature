@@ -1,0 +1,90 @@
+{
+    "id": "golang",
+    "name": "Fedora Golang Developer Enviroment🧊☕️🪶",
+    "version": "0.2.0",
+    "description": "Setup Fedora Environment for Development with Golang",
+    "options": {
+        "userName": {
+            "type": "string",
+            "description": "Auto use existing user with home dir or create remote-user",
+            "default": "automatic"
+        },
+        "copr": {
+            "type": "string",
+            "description": "Add Copr Repositories.automatic Recognizes ENV variables of packages to add their copr repos",
+            "default": "automatic"
+        },
+        "dnfInstall": {
+            "type": "string",
+            "description": "packages installed by default separated by whitespaces. automatic installs requirements including those of other settings ",
+            "default": "automatic"
+        },
+        "dnfRemove": {
+            "type": "string",
+            "description": "Remove packages from Image",
+            "default": "automatic"
+        },
+        "languageSupport": {
+            "type": "string",
+            "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
+            "default": "automatic"
+        },
+        "installHomebrew": {
+            "type": "string",
+            "description": "Install Homebrew as additional package manager", 
+            "default": "automatic"
+        },
+        "installGoPkg": {
+            "type": "string",
+            "description": "Install additional go packages separated by whitespaces",
+            "default": "automatic"
+        }
+    },
+    "containerEnv": {
+        "GOROOT": "/usr/local/go",
+        "GOPATH": "/go",
+        "PATH": "/usr/local/go/bin:/go/bin:${PATH}"
+    },
+    "capAdd": [
+        "SYS_PTRACE"
+    ],
+    "securityOpt": [
+        "seccomp=unconfined"
+    ],
+    "init": true,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.Go",
+                "quillaja.goasm",
+                "a-h.templ",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "github.vscode-github-actions",
+                "discretegames.f5anything",
+                "redhat.ansible",
+                "ms-azuretools.vscode-docker",
+                "GitHub.vscode-pull-request-github"
+            ],
+            "settings": {
+                "files.autoSave": "afterDelay",
+                "editor.smoothScrolling": true,
+                "terminal.integrated.lineHeight": 1.5,
+                "editor.fontLigatures": true,
+                "editor.lineHeight": 1.5,
+                "editor.minimap.enabled": false,
+                "editor.tabSize": 2,
+                "editor.semanticTokenColorCustomizations": {
+                    "enabled": true
+                },
+                "editor.semanticHighlighting.enabled": true,
+                "files.eol": "\n",
+                
+                "extensions.ignoreRecommendations": true,
+                "task.problemMatchers.neverPrompt": {
+                    "shell": true
+                }
+            }
+        }
+    }
+}
