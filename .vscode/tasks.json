@@ -21,7 +21,7 @@
 	//env variables are used to pass arguments to the tasks
 	"options": {
 		"env": {
-			"feature": "setup",
+			"feature": "coffedora",
 			"baseImage": "quay.io/fedora/fedora-minimal:latest",
 		}
 	},

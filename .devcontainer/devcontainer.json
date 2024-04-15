@@ -1,8 +1,14 @@
 {	
-    "remoteUser": "root", 
+  "remoteUser": "root", 
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bullseye",
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+		// "ghcr.io/devcontainers/features/docker-in-docker:2": {
+		// 	"moby": true,
+		// 	"installDockerBuildx": true,
+		// 	"version": "latest",
+		// 	"dockerDashComposeVersion": "v2"
+		// },
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
 			"moby": true,
 			"azureDnsAutoDetection": true,
 			"installDockerBuildx": true,
@@ -30,8 +36,13 @@
 		"ghcr.io/eliises/devcontainer-features/devcontainers-cli:1": {
 			"version": "latest",
 			"nodeVersion": "18.13.10"
-		},
-		"ghcr.io/devcontainers/features/sshd:1": {}
+		}
+		// "ghcr.io/devcontainers/features/sshd:1": {
+		// 	"SSHD_PORT":"2222",
+		// 	"USERNAME":"automatic",
+		// 	"START_SSHD":"false",
+		// 	"NEW_PASSWORD":"skip"
+		// }
 	},
 	"customizations": {
 		"vscode": {
@@ -47,7 +58,7 @@
 		}
 	},
   "remoteEnv": {
-    "GITHUB_USERNAME":"${localEnv:GITHUB_USERNAME}",
+    "GITHUB_USERNAME":"${localEnv:GITHUB_USERNAME:localEnv:GITHUB_USER}",
     "GH_TOKEN":"${localEnv:GH_TOKEN}"
   }
 }
