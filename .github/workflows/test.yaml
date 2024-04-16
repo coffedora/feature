@@ -2,7 +2,7 @@ name: "CI - Test Features"
 on:
   push:
     branches:
-      - main
+      - template
   pull_request:
   workflow_dispatch:
 
@@ -32,8 +32,7 @@ jobs:
     strategy:
       matrix:
         features:
-          - setup
-          - golang
+          - coffedora
     steps:
       - uses: actions/checkout@v4
 
