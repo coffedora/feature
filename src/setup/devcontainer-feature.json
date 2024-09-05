@@ -1,7 +1,7 @@
 {
     "id": "setup",
     "name": "setup Fedora Environment 🧊☕️🪶",
-    "version": "0.5.0",
+    "version": "0.6.1",
     "description": "Setup your Fedora devcontainer Environment",
     "options": {
         "userName": {
