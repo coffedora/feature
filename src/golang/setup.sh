@@ -101,7 +101,7 @@ configUser() {
         ln -s /workspaces ${user_home}/Workspaces
         chown -R ${USERNAME}:${USERNAME} /home/* || echo "Failed adjust home ownership" >&2
         chown -R ${USERNAME}:${USERNAME} /workspaces/ || echo "Failed adjust workspaces ownership" >&2
-        chown -R ${USERNAME}:${USERNAME} /usr/local/bin || echo "Failed adjust usr/locale/bin usrownership" >&2
+        chown -R ${USERNAME}:${USERNAME} /usr/local/bin || echo "Failed adjust /usr/local/bin  usrownership" >&2
         # add $user_home/.local/bin to system path
     fi
     PATH="${user_home}/bin:${user_home}/.local/bin:${user_home}/.local/script:$PATH"
@@ -123,9 +123,9 @@ homebrewSupport() {
     if  [[ $INSTALL_HOMEBREW == "false" ]]; then
         echo "Skip Homebrew installation"
     else
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"')>> /etc/bash.bashrc
-        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') > /etc/profile.d/brew.sh
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"')>> /etc/bash.bashrc &&\
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') > /etc/profile.d/brew.sh &&\
         chown -R ${USERNAME}:${USERNAME} /home/linuxbrew/.linuxbrew  
     fi
 }

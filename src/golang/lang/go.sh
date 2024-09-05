@@ -19,6 +19,8 @@ GO_TOOLS="\
     golang.org/x/tools/gopls@latest \
     honnef.co/go/tools/cmd/staticcheck@latest \
     golang.org/x/lint/golint@latest \
+    mvdan.cc/gofumpt@latest \
+    github.com/incu6us/goimports-reviser/v3@latest \
     github.com/mgechev/revive@latest \
     github.com/go-delve/delve/cmd/dlv@latest \
     github.com/fatih/gomodifytags@latest \
