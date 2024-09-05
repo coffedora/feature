@@ -32,7 +32,7 @@
         "installHomebrew": {
             "type": "string",
             "description": "Install Homebrew as additional package manager", 
-            "default": "automatic"
+            "default": "false"
         },
         "installGoPkg": {
             "type": "string",
