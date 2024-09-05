@@ -13,12 +13,12 @@ DNF_INSTALL="${DNFINSTALL:-"automatic"}"
 DNF_UPDATE="${DNFUPDATE:-"false"}"
 DNF_COPR="${COPR:-"automatic"}"
 DNF_REMOVE="${DNFREMOVE:-"automatic"}"
-INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"automatic"}"
+INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"false"}"
 REQUIREMENTS="\
     dnf-plugins-core coreutils curl iputils shadow-utils util-linux \
     gcc gcc-c++ git gh sudo passwd cracklib-dicts\
     procps procps-ng file psmisc fontconfig\
-    wget which tar xz unzip fzf ripgrep neovim fd tmux ansible zsh https://github.com/twpayne/chezmoi/releases/download/v2.47.1/chezmoi-2.47.1-x86_64.rpm"
+    wget which tar xz unzip fzf ripgrep pinentry neovim fd tmux ansible zsh https://github.com/twpayne/chezmoi/releases/download/v2.47.1/chezmoi-2.47.1-x86_64.rpm"
 
 # setup.sh script
 source ./setup.sh || $(echo -e "setup.sh not found" && exit 1)  

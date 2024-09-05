@@ -4,7 +4,7 @@ set -e
 USERNAME="${USERNAME:-"automatic"}"
 USER_UID="${USERUID:-"automatic"}"
 USER_GID="${USERGID:-"automatic"}"
-INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"automatic"}"
+INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"false"}"
 dnfInstall() {
     ln -s $(ls /bin/dnf* | head -n 1) /bin/dnf
     local DNF_INSTALLED=""
@@ -119,13 +119,12 @@ languageSupport() {
     fi
 }
 homebrewSupport() {
-    local homebrew_formulae="gcc starship tailwindcss"
     if  [[ $INSTALL_HOMEBREW == "false" ]]; then
         echo "Skip Homebrew installation"
     else
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"')>> /etc/bash.bashrc &&\
-        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') > /etc/profile.d/brew.sh &&\
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"')>> /etc/bash.bashrc 
+        (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') > /etc/profile.d/brew.sh
         chown -R ${USERNAME}:${USERNAME} /home/linuxbrew/.linuxbrew  
     fi
 }
