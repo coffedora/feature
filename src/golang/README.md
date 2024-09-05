@@ -20,7 +20,7 @@ Setup Fedora Environment for Development with Golang
 | dnfInstall | packages installed by default separated by whitespaces. automatic installs requirements including those of other settings  | string | automatic |
 | dnfRemove | Remove packages from Image | string | automatic |
 | languageSupport | Install additional language support. Language Support is distributed in own scripts(Currently only for go) | string | automatic |
-| installHomebrew | Install Homebrew as additional package manager | string | automatic |
+| installHomebrew | Install Homebrew as additional package manager | string | false |
 | installGoPkg | Install additional go packages separated by whitespaces | string | automatic |
 
 ## Customizations
