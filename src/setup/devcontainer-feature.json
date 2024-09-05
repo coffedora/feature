@@ -32,7 +32,7 @@
         "installHomebrew": {
             "type": "string",
             "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
-            "default": "automatic"
+            "default": "false"
         }
     },
     "containerEnv": {
