@@ -1,7 +1,7 @@
 {
     "id": "golang",
     "name": "Fedora Golang Developer Enviroment🧊☕️🪶",
-    "version": "0.2.0",
+    "version": "0.6.1",
     "description": "Setup Fedora Environment for Development with Golang",
     "options": {
         "userName": {

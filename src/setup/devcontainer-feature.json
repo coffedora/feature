@@ -1,7 +1,7 @@
 {
     "id": "setup",
     "name": "setup Fedora Environment 🧊☕️🪶",
-    "version": "0.5.0",
+    "version": "0.6.1",
     "description": "Setup your Fedora devcontainer Environment",
     "options": {
         "userName": {
@@ -32,7 +32,7 @@
         "installHomebrew": {
             "type": "string",
             "description": "Install additional language support. Language Support is distributed in own scripts(Currently only for go)",
-            "default": "automatic"
+            "default": "false"
         }
     },
     "containerEnv": {
