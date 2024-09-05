@@ -13,7 +13,7 @@ DNF_INSTALL="${DNFINSTALL:-"automatic"}"
 DNF_UPDATE="${DNFUPDATE:-"false"}"
 DNF_COPR="${COPR:-"automatic"}"
 DNF_REMOVE="${DNFREMOVE:-"automatic"}"
-INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"automatic"}"
+INSTALL_HOMEBREW="${INSTALLHOMEBREW:-"false"}"
 REQUIREMENTS="\
     dnf-plugins-core coreutils curl iputils shadow-utils util-linux \
     gcc gcc-c++ git gh sudo passwd cracklib-dicts\
