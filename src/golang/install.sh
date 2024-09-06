@@ -38,5 +38,6 @@ fi
 
 # Check if GH TOKEN is set and gh cli is installed run setup-git as $USERNAME
 if [ -n "$GH_TOKEN" ] && [ -x "$(command -v gh)" ]; then
-    sudo -u $USERNAME -i gh auth login --with
+    gh auth setup-git
+    sudo -u $USERNAME -i gh auth setup-git
 fi
