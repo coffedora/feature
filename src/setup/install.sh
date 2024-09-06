@@ -35,3 +35,8 @@ wslConfig $WSL_CONFIG && echo -e "WSL configured: $WSL_CONFIG"
 if [ DNF_UPDATE == "true" ]; then
     dnf update -y && echo -e "DNF updated"
 fi
+# Check if GH TOKEN is set and gh cli is installed run setup-git as $USERNAME
+if [ -n "$GH_TOKEN" ] && [ -x "$(command -v gh)" ]; then
+    gh auth setup-git
+    sudo -u $USERNAME -i gh auth setup-git
+fi
